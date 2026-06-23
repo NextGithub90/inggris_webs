@@ -16,11 +16,11 @@ const vocabularyData = [
     { word: "Determine", ipa: "/dɪˈtɜːmɪn/", example: "We determine the result.", wrongAudio: "common_mispronunciation/Determine -.m4a.mp4", rightAudio: "correct_pronunciation/Determine +.m4a.mp4" },
     { word: "Bought", ipa: "/bɔːt/", example: "I bought a new book.", wrongAudio: "common_mispronunciation/Bought -.m4a.mp4", rightAudio: "correct_pronunciation/Bought +.m4a.mp4" },
     { word: "Vegetable", ipa: "/ˈvedʒtəbl/", example: "I eat vegetables every day.", wrongAudio: "common_mispronunciation/Vegetable-.m4a.mp4", rightAudio: "correct_pronunciation/Vegetable +.m4a.mp4" },
-    { word: "Mature", ipa: "/məˈtjʊə(r)/", example: "People mature over time.", wrongAudio: "common_mispronunciation/Mature -.m4a.mp4", rightAudio: "correct_pronunciation/Mature +.m4a.mp4" },
-    { word: "Archive", ipa: "/ˈɑːkaɪv/", example: "I will archive these older files.", wrongAudio: "common_mispronunciation/Archive -.m4a.mp4", rightAudio: "correct_pronunciation/Archive +.m4a.mp4" },
-    { word: "Debt", ipa: "/det/", example: "He paid off his credit card debt.", wrongAudio: "common_mispronunciation/Debt -.m4a.mp4", rightAudio: "correct_pronunciation/Debt +.m4a.mp4" },
-    { word: "Knife", ipa: "/naɪf/", example: "Use a sharp knife to cut the vegetables.", wrongAudio: "common_mispronunciation/Knife -.m4a.mp4", rightAudio: "correct_pronunciation/Knife +.m4a.mp4" },
-    { word: "Knight", ipa: "/naɪt/", example: "The knight rode a white horse.", wrongAudio: "common_mispronunciation/Knight -.m4a.mp4", rightAudio: "correct_pronunciation/Knight +.m4a.mp4" }
+    { word: "Mature", ipa: "/məˈtʃʊə(r)/", example: "People mature over time.", wrongAudio: "common_mispronunciation/Mature -.m4a.mp4", rightAudio: "correct_pronunciation/Mature +.m4a.mp4" },
+    { word: "Archive", ipa: "/ˈɑːkaɪv/", example: "We archive old documents.", wrongAudio: "common_mispronunciation/Archive -.m4a.mp4", rightAudio: "correct_pronunciation/Archive +.m4a.mp4" },
+    { word: "Debt", ipa: "/det/", example: "They pay their debt slowly.", wrongAudio: "common_mispronunciation/Debt -.m4a.mp4", rightAudio: "correct_pronunciation/Debt +.m4a.mp4" },
+    { word: "Knife", ipa: "/naɪf/", example: "I use a knife to cut bread.", wrongAudio: "common_mispronunciation/Knife -.m4a.mp4", rightAudio: "correct_pronunciation/Knife +.m4a.mp4" },
+    { word: "Knight", ipa: "/naɪt/", example: "The knight fights bravely.", wrongAudio: "common_mispronunciation/Knight -.m4a.mp4", rightAudio: "correct_pronunciation/Knight +.m4a.mp4" }
 ];
 
 const container = document.getElementById('flashcards-container');
@@ -28,8 +28,8 @@ const mainPlayer = document.getElementById('main-player');
 
 // Play Sound Logic
 function playSound(audioPath) {
-    // Encode the path to handle spaces in filenames correctly
-    const encodedPath = encodeURI(audioPath);
+    // Encode the path to handle spaces and special chars like '+' correctly
+    const encodedPath = audioPath.split('/').map(encodeURIComponent).join('/');
     mainPlayer.src = encodedPath;
     mainPlayer.play().catch(e => {
         console.error("Audio playback failed: ", e);
