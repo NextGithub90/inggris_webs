@@ -590,7 +590,7 @@ a {
 }
 
 .audio-btn.right {
-  background-color: var(--correct-bg);
+  background-color: #6ff542;
   color: var(--correct-text);
 }
 
